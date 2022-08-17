@@ -4,6 +4,7 @@ import requests
 import cv2
 
 from Utils.MemesPathInfo import MemesPathInfo
+from Utils.Tokens import Tokens
 
 
 class Scraper:
@@ -14,7 +15,7 @@ class Scraper:
     ImagesSearchAmount: int = int(input('How much memes ya want from each subreddit ? '))
 
     for line in SubRedditsFile:
-            SubReddit = MemesPathInfo.Reddit.subreddit(line.strip())
+            SubReddit = Tokens.Reddit.subreddit(line.strip())
 
             print(f"Collecting memes from {line.strip()}!")
 

@@ -2,9 +2,9 @@ import os.path as path
 from typing import Dict
 import stdiomask
 import pickle
+import praw
 
-
-class Token:
+class Tokens:
 
     def CreateToken() -> Dict:
         Creds = {}
@@ -28,3 +28,13 @@ class Token:
             pickle.dump(Creds, TokenFile)
             
         return Creds
+
+
+    # Get token file to log into reddit.
+    Creds: Dict = GetToken()
+
+    Reddit = praw.Reddit(client_id = Creds['client_id'],
+                    client_secret = Creds['client_secret'],
+                    user_agent = Creds['user_agent'],
+                    username = Creds['username'],
+                    password = Creds['password'])

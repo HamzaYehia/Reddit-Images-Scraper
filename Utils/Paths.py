@@ -2,7 +2,7 @@ import os
 import os.path as path
 
 
-class Folder:
+class Paths:
 
     def CreateFolder(ImagePath):
       DoesFolderExist = path.isdir(ImagePath) 
