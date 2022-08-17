@@ -37,7 +37,7 @@ Reddit = praw.Reddit(client_id = Creds['client_id'],
                     password = Creds['password'])
 
 
-SubRedditsFile = open("Subreddits List.txt", "r")
+SubRedditsFile = open("SubReddits List.txt", "r")
 ImgNotFound = cv2.imread('IgnoreImages/ImageNF.png')
 
 
