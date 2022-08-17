@@ -10,7 +10,7 @@ from Utils.Token import Token
 class MemesPathInfo:
 
     # Path to save images
-    ImagePath: str = Folder.GetImgPath(path.dirname(path.realpath(__file__)))
+    ImagePath: str = Folder.GetImgPath('')
 
     Folder.CreateFolder(ImagePath)
 
