@@ -7,7 +7,7 @@ import praw
 
 class Tokens:
 
-    def CreateToken() -> Dict:
+    def CreateToken(self) -> Dict:
         Creds: Dict = {}
     
         Creds['client_id'] = input('client_id: ')
@@ -20,11 +20,13 @@ class Tokens:
 
 
     def GetToken() -> Dict:
+        Creds: Dict
+
         if path.exists('Token.pickle'):
             with open('Token.pickle', 'rb') as Token:
-                Creds: Dict = pickle.load(Token)
+                Creds = pickle.load(Token)
         else:
-            Creds: Dict = Token.CreateToken()
+            Creds = Tokens.CreateToken()
             TokenFile = open("Token.pickle","wb")
             pickle.dump(Creds, TokenFile)
             
