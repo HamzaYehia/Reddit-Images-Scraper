@@ -7,7 +7,7 @@ import praw
 
 class Tokens:
 
-    def CreateToken(self) -> Dict:
+    def CreateToken() -> Dict:
         Creds: Dict = {}
     
         Creds['client_id'] = input('client_id: ')
