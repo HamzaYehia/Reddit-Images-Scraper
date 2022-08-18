@@ -1,7 +1,5 @@
 import os.path as path
-import numpy as np
 import requests
-import cv2
 
 from Utils.MemesPathInfo import MemesPathInfo
 from Utils.Tokens import Tokens
@@ -9,30 +7,26 @@ from Utils.Tokens import Tokens
 
 class Scraper:
 
-    SubRedditsList = open("SubReddits List.txt", "r")
-    ImgNotFound = cv2.imread('IgnoreImages/ImageNF.png')
+    SubRedditsList = open('SubReddits List.txt', 'r')
 
     MemesSearchAmount: int = int(input('How much memes ya want from each subreddit ? '))
 
     for line in SubRedditsList:
             SubReddit = Tokens.Reddit.subreddit(line.strip())
 
-            print(f"Collecting memes from {line.strip()}!")
+            print(f'Collecting memes from {line.strip()}!')
 
             for Post in SubReddit.new(limit = MemesSearchAmount):
                 PostUrl: str = Post.url.lower()
 
-                if 'png' or 'jpg' in PostUrl:
+                if 'png' in PostUrl or 'jpg' in PostUrl:
 
-                    Res = requests.get(PostUrl, stream=True).raw
+                    Image = requests.get(PostUrl).content
+                    ImageDoesntExist: bool = not path.exists(f'{MemesPathInfo.ImagePath}{line.strip()}-{Post.id}.png')
+                    
+                    if ImageDoesntExist:
+                        with open(f'{MemesPathInfo.ImagePath}{line.strip()}-{Post.id}.png', 'wb') as ImageDownloader:
+                            ImageDownloader.write(Image)
 
-                    Image = np.asarray(bytearray(Res.read()), dtype="uint8")
-                    Image = cv2.imdecode(Image, cv2.IMREAD_COLOR)
-
-                    if np.any(Image):
-                        ImageDoesntExist: bool = not path.exists(f"{MemesPathInfo.ImagePath}{line.strip()}-{Post.id}.png")
-
-                        if ImageDoesntExist:
-                            cv2.imwrite(f"{MemesPathInfo.ImagePath}{line.strip()}-{Post.id}.png", Image)
-                    else:
+                else:
                         print('Encounterd a post without a meme *angry face*')

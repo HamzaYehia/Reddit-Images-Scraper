@@ -15,9 +15,3 @@ class Paths:
         ImagePath: str = path.join(DirPath, "Images/")
 
         return ImagePath
-
-
-    def GetIgnorePath(DirPath: str) -> str:
-        IgnorePath: str = path.join(DirPath, "IgnoreImages/")
-
-        return IgnorePath
