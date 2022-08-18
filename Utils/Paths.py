@@ -4,15 +4,20 @@ import os.path as path
 
 class Paths:
 
-    def CreateFolder(ImagePath):
-      DoesFolderExist = path.isdir(ImagePath) 
+    def CreateFolder(ImagePath: str) -> None:
+      FolderDoesntExist: bool = not path.isdir(ImagePath) 
 
-      if not DoesFolderExist:   
-        os.makedirs(ImagePath)
-    
+      if FolderDoesntExist:   
+          os.makedirs(ImagePath)
+
 
     def GetImgPath(DirPath: str) -> str:
-        ImagePath = path.join(DirPath, "Images/")
-        IgnorePath = path.join(DirPath, "IgnoreImages/")
-        
+        ImagePath: str = path.join(DirPath, "Images/")
+
         return ImagePath
+
+
+    def GetIgnorePath(DirPath: str) -> str:
+        IgnorePath: str = path.join(DirPath, "IgnoreImages/")
+
+        return IgnorePath

@@ -1,13 +1,14 @@
-import os.path as path
 from typing import Dict
+import os.path as path
 import stdiomask
 import pickle
 import praw
 
+
 class Tokens:
 
     def CreateToken() -> Dict:
-        Creds = {}
+        Creds: Dict = {}
     
         Creds['client_id'] = input('client_id: ')
         Creds['client_secret'] = stdiomask.getpass(prompt='client_secret: ')

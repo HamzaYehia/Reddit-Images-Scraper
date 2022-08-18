@@ -1,5 +1,3 @@
-from typing import Dict
-
 from Utils.Paths import Paths
 from Utils.Tokens import Tokens
 

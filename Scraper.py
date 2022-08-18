@@ -1,3 +1,4 @@
+from ast import Sub
 import os.path as path
 import numpy as np
 import requests
@@ -9,12 +10,12 @@ from Utils.Tokens import Tokens
 
 class Scraper:
 
-    SubRedditsFile = open("SubReddits List.txt", "r")
+    SubRedditsList = open("SubReddits List.txt", "r")
     ImgNotFound = cv2.imread('IgnoreImages/ImageNF.png')
 
     ImagesSearchAmount: int = int(input('How much memes ya want from each subreddit ? '))
 
-    for line in SubRedditsFile:
+    for line in SubRedditsList:
             SubReddit = Tokens.Reddit.subreddit(line.strip())
 
             print(f"Collecting memes from {line.strip()}!")
