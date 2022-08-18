@@ -8,3 +8,5 @@ class MemesPathInfo:
     ImagePath: str = Paths.GetImgPath('')
 
     Paths.CreateFolder(ImagePath)
+
+    IgnorePath: str = Paths.GetIgnorePath('')

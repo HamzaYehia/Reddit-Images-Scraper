@@ -19,12 +19,12 @@ class Tokens:
         return Creds
 
 
-    def GetToken():
+    def GetToken() -> Dict:
         if path.exists('Token.pickle'):
             with open('Token.pickle', 'rb') as Token:
-                Creds = pickle.load(Token)
+                Creds: Dict = pickle.load(Token)
         else:
-            Creds = Token.CreateToken()
+            Creds: Dict = Token.CreateToken()
             TokenFile = open("Token.pickle","wb")
             pickle.dump(Creds, TokenFile)
             
