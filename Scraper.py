@@ -1,4 +1,3 @@
-from ast import Sub
 import os.path as path
 import numpy as np
 import requests
@@ -21,7 +20,7 @@ class Scraper:
             print(f"Collecting memes from {line.strip()}!")
 
             for Post in SubReddit.new(limit = ImagesSearchAmount):
-                PostUrl = Post.url.lower()
+                PostUrl: str = Post.url.lower()
 
                 if 'png' or 'jpg' in PostUrl:
 
