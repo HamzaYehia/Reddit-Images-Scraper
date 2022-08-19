@@ -1,6 +1,4 @@
-opencv-python
 praw
 requests
-numpy
 pickle
 stdiomask
