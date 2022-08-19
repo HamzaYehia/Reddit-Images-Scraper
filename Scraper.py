@@ -10,12 +10,12 @@ class Scraper:
     def Scrape():
         SubRedditsList = open('SubReddits List.txt', 'r')
 
-        ImagesSearchAmount: int = int(input('How much memes ya want from each subreddit ? '))
+        ImagesSearchAmount: int = int(input('How much Images ya want from each subreddit ? '))
 
         for line in SubRedditsList:
                 SubReddit = Tokens.Reddit.subreddit(line.strip())
 
-                print(f'Collecting memes from {line.strip()}!')
+                print(f'Collecting Images from {line.strip()}!')
 
                 for Post in SubReddit.new(limit = ImagesSearchAmount):
                     PostUrl: str = Post.url.lower()
@@ -30,7 +30,7 @@ class Scraper:
                                 ImageDownloader.write(Image)
 
                     else:
-                            print('Encounterd a post without a meme *angry face*')
+                            print('Encounterd a post without an Image *angry face*')
 
 
 Scraper.Scrape()
