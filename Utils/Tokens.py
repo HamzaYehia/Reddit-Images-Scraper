@@ -26,7 +26,7 @@ class Tokens:
             with open('Token.pickle', 'rb') as Token:
                 Creds = pickle.load(Token)
         else:
-            Creds = Token.CreateToken()
+            Creds = Tokens.CreateToken()
             TokenFile = open("Token.pickle","wb")
             pickle.dump(Creds, TokenFile)
             
